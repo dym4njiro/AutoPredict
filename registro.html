@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta | AutoPredict</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos exclusivos para centrar la cajita de registro */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #0a0a0a 0%, #141414 100%);
+        }
+        .auth-card {
+            background-color: #141414;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #2d3748;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .auth-card h2 { margin-bottom: 10px; }
+        .auth-card p { color: #a0aec0; margin-bottom: 25px; font-size: 0.9rem; }
+        .auth-form { display: flex; flex-direction: column; gap: 15px; }
+        .auth-form input { width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #2d3748; background-color: #0a0a0a; color: white; margin: 0; }
+        .auth-form input:focus { outline: 1px solid #d4ff00; }
+        .auth-btn { width: 100%; margin-top: 10px; }
+        .auth-links { margin-top: 20px; font-size: 0.85rem; color: #a0aec0; }
+        .auth-links a { color: #d4ff00; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <a href="index.html" class="logo" style="display: block; margin-bottom: 20px;">Auto<span class="text-accent">Predict</span></a>
+            <h2>Crea tu cuenta</h2>
+            <p>Conecta tu escáner OBD-II y prevén fallas.</p>
+
+           <form class="auth-form" onsubmit="event.preventDefault(); 
+                const nameInput = document.getElementById('reg-name').value; 
+                const roleInput = document.getElementById('reg-role').value;
+                localStorage.setItem('userRegisteredName', nameInput); 
+                
+                // Magia de enrutamiento: Si es taller lo manda a su propio dashboard
+                if(roleInput === 'taller') {
+                    window.location.href='dashboard-taller.html';
+                } else {
+                    window.location.href='dashboard.html';
+                }
+            ">
+                <input type="text" id="reg-name" placeholder="Nombre completo o Nombre del Taller" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                
+                <select id="reg-role" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #2d3748; background-color: #0a0a0a; color: white;">
+                    <option value="conductor">🚗 Soy Conductor (Particular/Taxi)</option>
+                    <option value="taller">🔧 Soy Taller Mecánico</option>
+                </select>
+
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn-primary auth-btn">Crear Cuenta</button>
+            </form>
+
+            <div class="auth-links">
+                ¿Ya tienes cuenta? <a href="dashboard.html">Inicia sesión aquí</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

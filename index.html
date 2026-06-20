@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPredict | Telemetría Avanzada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="#inicio" class="logo">Auto<span class="text-accent">Predict</span></a>
+        <nav class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#simulador">Diagnóstico IA</a>
+            <a href="#beneficios">Beneficios</a>
+        </nav>
+        <div class="nav-actions">
+            <a href="dashboard.html" class="login-link">Log in</a>
+            <a href="registro.html" class="btn-primary">Sign up</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="hero-content">
+                <h1>Impulsando el futuro con <span class="text-accent">Telemetría</span> avanzada</h1>
+                <p>Optimiza tus rutas, reduce costos y toma el control total de tu auto con nuestra solución de mantenimiento predictivo mediante OBD-II e Inteligencia Artificial.</p>
+                <div class="hero-buttons">
+                    <a href="#simulador" class="btn-primary btn-large">Probar Simulador</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="car-placeholder">
+                    <span>[🚗 Reemplaza esto con la imagen de tu auto usando la etiqueta img]</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="simulador" class="simulator-section">
+            <h2>Simulador de Diagnóstico OBD-II</h2>
+            <p>Ingresa un código de error para ver la predicción de nuestra IA.</p>
+            
+            <div class="simulator-card">
+                <form id="diagnostic-form">
+                    <input type="text" id="obd-code" placeholder="Ej: P0300, P0171..." required>
+                    <button type="submit" class="btn-primary">Analizar Telemetría</button>
+                </form>
+
+                <div id="loading-spinner" class="hidden">
+                    <div class="spinner"></div>
+                    <p class="text-accent">Analizando datos del motor...</p>
+                </div>
+
+                <div id="diagnostic-result" class="hidden result-box">
+                    <h3 id="result-title">Diagnóstico Completado</h3>
+                    <p id="result-desc"><strong>Falla detectada:</strong> Anomalía múltiple en cilindros.</p>
+                    <p id="result-action"><strong>Acción recomendada:</strong> Revisión urgente de bujías.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 60px 5%; text-align: center;">
+            <p class="text-muted" style="font-weight: bold; font-size: 0.8rem; letter-spacing: 2px;">PROCESO</p>
+            <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Cuida tu vehículo en 4 pasos</h2>
+            <div class="grid-4" style="text-align: left;">
+                <div class="data-card">
+                    <h1 style="color: var(--text-muted); opacity: 0.5; font-size: 3rem;">01</h1>
+                    <h3>Registra tu vehículo</h3>
+                    <p class="text-muted">Agrega marca, modelo, año y kilometraje para personalizar el seguimiento.</p>
+                </div>
+                <div class="data-card">
+                    <h1 style="color: var(--text-muted); opacity: 0.5; font-size: 3rem;">02</h1>
+                    <h3>Recibe alertas preventivas</h3>
+                    <p class="text-muted">AutoPredict te avisa cuando detecta señales de desgaste próximo.</p>
+                </div>
+                <div class="data-card">
+                    <h1 style="color: var(--text-muted); opacity: 0.5; font-size: 3rem;">03</h1>
+                    <h3>Consulta recomendaciones</h3>
+                    <p class="text-muted">La app traduce la información técnica en acciones simples de entender.</p>
+                </div>
+                <div class="data-card">
+                    <h1 style="color: var(--text-muted); opacity: 0.5; font-size: 3rem;">04</h1>
+                    <h3>Agenda una revisión</h3>
+                    <p class="text-muted">Encuentra talleres, compara opciones y programa el mantenimiento.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 60px 5%; text-align: center; background: #050505;">
+            <p class="text-muted" style="font-weight: bold; font-size: 0.8rem; letter-spacing: 2px;">PLANES</p>
+            <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Elige cómo quieres usar AutoPredict</h2>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div class="data-card" style="width: 300px; text-align: left;">
+                    <p class="text-muted">Para conductores</p>
+                    <h2>Gratis</h2>
+                    <p class="text-muted mt-10">Para conductores particulares, taxistas y conductores de aplicativo.</p>
+                    <ul style="margin: 20px 0; padding-left: 20px; color: var(--text-muted);">
+                        <li>Registro de vehículo</li>
+                        <li>Alertas preventivas</li>
+                        <li>Historial técnico básico</li>
+                    </ul>
+                    <a href="registro.html" class="btn-outline" style="display: block; text-align: center;">Crear cuenta gratis</a>
+                </div>
+                <div class="data-card" style="width: 300px; text-align: left; border-color: var(--accent-neon);">
+                    <p class="text-muted">Para Talleres</p>
+                    <h2 class="text-accent">A consultar</h2>
+                    <p class="text-muted mt-10">Para talleres que buscan optimizar su flujo y comunicarse mejor.</p>
+                    <ul style="margin: 20px 0; padding-left: 20px; color: var(--text-muted);">
+                        <li>Gestión de citas</li>
+                        <li>Reportes con evidencia</li>
+                        <li>Historial de clientes</li>
+                    </ul>
+                    <a href="registro.html" class="btn-primary" style="display: block; text-align: center; color: white;">Registrar mi taller</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="chatbot-widget">
+        <button id="chat-toggle" class="btn-primary chat-btn">💬 Asistente Mecánico</button>
+        <div id="chat-window" class="chat-window hidden">
+            <div class="chat-header">
+                <h4>AutoPredict IA</h4>
+                <button id="close-chat" class="close-btn">✖</button>
+            </div>
+            <div class="chat-body" id="chat-messages">
+                <div class="message bot">Hola, soy tu asistente mecánico. ¿Qué síntoma presenta tu auto hoy?</div>
+            </div>
+            <form id="chat-form" class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ej: Mi auto vibra..." required autocomplete="off">
+                <button type="submit" class="send-btn">➤</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AutoPredict. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

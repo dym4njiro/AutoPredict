@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Taller | AutoPredict</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">Auto<span class="text-accent">Predict</span> <span style="font-size: 0.8rem; color: #a0aec0;">TALLER</span></a>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-target="panel-cola">📋 Cola de Vehículos</a>
+                <a href="#" class="nav-item" data-target="panel-cotizar">📝 Generar Cotización</a>
+                <a href="#" class="nav-item" data-target="panel-evidencias">📷 Subir Evidencias</a>
+                <a href="#" class="nav-item" data-target="panel-finanzas">💰 Finanzas y Facturación</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar" id="user-avatar" style="background: #e2b93b;">T</div>
+                    <div>
+                        <p class="user-name" id="dashboard-user-name">Mi Taller</p>
+                        <p class="user-role">Suscripción Negocios</p>
+                    </div>
+                </div>
+                <a href="index.html" class="logout-btn" onclick="localStorage.removeItem('userRegisteredName');">Cerrar Sesión</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <h1 id="page-title">Cola de Vehículos</h1>
+                <div class="topbar-actions">
+                    <span id="live-clock" class="text-muted">--:--</span>
+                    <button class="btn-primary">Pausar Recepción (Agenda Llena)</button>
+                </div>
+            </header>
+
+            <div id="panel-cola" class="view-panel active">
+                <div class="grid-2">
+                    <div class="data-card">
+                        <h3>Vehículos en Taller</h3>
+                        
+                        <div class="alert-item" style="border-left-color: var(--warning); margin-top: 15px;">
+                            <div>
+                                <strong>Toyota Hilux (ABC-123) - Cliente: Juan Pérez</strong>
+                                <p class="text-muted">Falla reportada: P0300 (Cilindros)</p>
+                            </div>
+                            <span class="tag tag-yellow">En Revisión</span>
+                        </div>
+
+                        <div class="alert-item" style="border-left-color: var(--success); margin-top: 10px;">
+                            <div>
+                                <strong>Kia Rio (XYZ-789) - Cliente: Luis M.</strong>
+                                <p class="text-muted">Falla reportada: Cambio de Pastillas</p>
+                            </div>
+                            <span class="tag" style="background: var(--success); color: white;">Listo para entrega</span>
+                        </div>
+                    </div>
+
+                    <div class="data-card">
+                        <h3>Citas de Hoy (Próximos ingresos)</h3>
+                        <table class="data-table mt-10">
+                            <tr><td>14:00</td><td>Hyundai Accent</td><td><button class="btn-outline">Recibir</button></td></tr>
+                            <tr><td>16:30</td><td>Nissan Yaris</td><td><button class="btn-outline">Recibir</button></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="panel-cotizar" class="view-panel hidden">
+                <div class="data-card" style="max-width: 600px;">
+                    <h2>Nueva Cotización</h2>
+                    <p class="text-muted mb-15">Envía el presupuesto detallado al app del conductor.</p>
+                    
+                    <input type="text" placeholder="Placa del vehículo (Ej: ABC-123)" style="width: 100%; padding: 10px; margin-bottom: 10px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px;">
+                    
+                    <textarea placeholder="Descripción del diagnóstico técnico..." style="width: 100%; padding: 10px; margin-bottom: 10px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px; height: 100px;"></textarea>
+                    
+                    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <input type="number" placeholder="Costo Mano de Obra (S/)" style="flex: 1; padding: 10px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px;">
+                        <input type="number" placeholder="Costo Repuestos (S/)" style="flex: 1; padding: 10px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px;">
+                    </div>
+
+                    <button class="btn-primary" style="width: 100%;" onclick="alert('Cotización enviada al cliente. Esperando aprobación en su app.')">Enviar Cotización Digital</button>
+                </div>
+            </div>
+
+            <div id="panel-evidencias" class="view-panel hidden">
+                <div class="data-card" style="max-width: 600px;">
+                    <h2>Subir Evidencia Visual</h2>
+                    <p class="text-muted mb-15">Toma fotos de las piezas dañadas para respaldar tu trabajo y enviárselas al cliente.</p>
+
+                    <select style="width: 100%; padding: 10px; margin-bottom: 15px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px;">
+                        <option>Seleccionar Vehículo en Taller...</option>
+                        <option>Toyota Hilux (ABC-123)</option>
+                    </select>
+
+                    <div style="border: 2px dashed var(--border-color); padding: 50px; text-align: center; border-radius: 8px; margin-bottom: 20px; cursor: pointer;">
+                        <span style="font-size: 2rem;">📷</span>
+                        <p class="text-muted mt-10">Haz clic para abrir la cámara o subir foto</p>
+                    </div>
+
+                    <button class="btn-primary" style="width: 100%;" onclick="alert('Foto subida con éxito. El cliente recibió una notificación push en su celular.')">Enviar Evidencia al Cliente</button>
+                </div>
+            </div>
+
+            <div id="panel-finanzas" class="view-panel hidden">
+                <h2>Ingresos Mensuales</h2>
+                <div class="grid-4 mt-10">
+                    <div class="data-card" style="text-align: center;">
+                        <p class="card-title">Ingresos Hoy</p>
+                        <h3 class="card-value text-accent">S/ 450.00</h3>
+                    </div>
+                    <div class="data-card" style="text-align: center;">
+                        <p class="card-title">Ingresos del Mes</p>
+                        <h3 class="card-value">S/ 4,200.00</h3>
+                    </div>
+                    <div class="data-card" style="text-align: center;">
+                        <p class="card-title">Cotizaciones Rechazadas</p>
+                        <h3 class="card-value text-danger">2</h3>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="#" class="bottom-nav-item active" onclick="document.querySelector('[data-target=\'panel-resumen\']').click()">
+            <span>🏠</span><br>Inicio
+        </a>
+        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-vehiculos\']').click()">
+            <span>🚗</span><br>Vehículo
+        </a>
+        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-agenda\']').click()">
+            <span>🔧</span><br>Mant.
+        </a>
+        <a href="#" class="bottom-nav-item">
+            <span>👤</span><br>Perfil
+        </a>
+    </nav>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
