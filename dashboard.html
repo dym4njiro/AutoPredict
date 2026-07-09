@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel | AutoPredict</title>
+    <title>Portal Taller | AutoPredict</title>
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
@@ -12,33 +11,21 @@
         
         <aside class="sidebar">
             <div class="sidebar-header">
-                <a href="index.html" class="logo">Auto<span class="text-accent">Predict</span></a>
+                <a href="index.html" class="logo">Auto<span class="text-accent">Predict</span> <span style="font-size: 0.8rem; color: #a0aec0;">TALLER</span></a>
             </div>
             <nav class="sidebar-nav">
-               
-                <p class="text-muted" style="padding: 0 25px; margin-top: 10px; font-size: 0.8rem; text-transform: uppercase;">Principal</p>
-                <a href="#" class="nav-item active" data-target="panel-resumen">📊 Resumen Flota</a>
-                <a href="#" class="nav-item" data-target="panel-vehiculos">🚗 Mis Vehículos</a>
-                <a href="#" class="nav-item" data-target="panel-historial">📋 Historial Clínico</a>
-                <a href="#" class="nav-item" data-target="panel-alertas">⚠️ Alertas <span class="badge">1</span></a>
-   
-                <p class="text-muted" style="padding: 0 25px; margin-top: 20px; font-size: 0.8rem; text-transform: uppercase;">Servicios</p>
-                <a href="#" class="nav-item" data-target="panel-talleres">📍 Buscar Talleres</a>
-                <a href="#" class="nav-item" data-target="panel-agenda">📅 Mis Citas</a>
-                <a href="#" class="nav-item" data-target="panel-cotizaciones">💰 Cotizaciones</a>
-                <a href="#" class="nav-item" data-target="panel-pagos">💳 Pagos y Facturas</a>
-
-                <p class="text-muted" style="padding: 0 25px; margin-top: 20px; font-size: 0.8rem; text-transform: uppercase;">Avanzado</p>
-                <a href="#" class="nav-item" data-target="panel-reportes">📈 Reportes Analíticos</a>
-                <a href="#" class="nav-item" data-target="panel-configuracion">⚙️ Configuración</a>
+                <a href="#" class="nav-item active" data-target="panel-cola">📋 Cola de Vehículos</a>
+                <a href="#" class="nav-item" data-target="panel-cotizar">📝 Generar Cotización</a>
+                <a href="#" class="nav-item" data-target="panel-evidencias">📷 Subir Evidencias</a>
+                <a href="#" class="nav-item" data-target="panel-finanzas">💰 Finanzas y Facturación</a>
+                <a href="#" class="nav-item" data-target="panel-perfil-taller">🏪 Mi Taller</a>
             </nav>
-    
             <div class="sidebar-footer">
                 <div class="user-info">
-                    <div class="avatar" id="user-avatar">JP</div>
+                    <div class="avatar" id="user-avatar" style="background: #e2b93b;">T</div>
                     <div>
-                        <p class="user-name" id="dashboard-user-name">Juan Pérez</p>
-                        <p class="user-role">Suscripción Premium</p>
+                        <p class="user-name" id="dashboard-user-name">Mi Taller</p>
+                        <p class="user-role">Suscripción Negocios</p>
                     </div>
                 </div>
                 <a href="index.html" class="logout-btn" onclick="localStorage.removeItem('userRegisteredName');">Cerrar Sesión</a>
@@ -46,364 +33,161 @@
         </aside>
 
         <main class="main-content">
-  
             <header class="topbar">
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <button id="btn-menu-movil" class="btn-menu-movil">☰</button>
-                    <h1 id="page-title">Resumen Flota</h1>
-                </div>
+                <h1 id="page-title">Cola de Vehículos</h1>
                 <div class="topbar-actions">
                     <span id="live-clock" class="text-muted">--:--</span>
-                    <button class="btn-primary" onclick="alert('Buscando dispositivos Bluetooth...')">Conectar OBD-II</button>
+                    <button class="btn-primary" id="btn-pausar-recepcion">Pausar Recepción (Agenda Llena)</button>
                 </div>
             </header>
 
-            <div id="panel-resumen" class="view-panel active">
-                <div class="active-vehicle-banner">
-                    <div>
-                        <h2>Conectado: <span class="text-accent" id="resumen-vehiculo-nombre">Toyota Hilux 2024</span></h2>
-                        <p class="text-muted">VIN: <span id="resumen-vehiculo-vin">4T1B11BK0EUXXXXXX</span></p>
-                    </div>
-                    <div class="score-circle" id="resumen-score">85%</div>
-                </div>
-
-                <div class="grid-4">
-                    <div class="data-card">
-                        <p class="card-title">RPM Motor</p>
-                        <h3 id="live-rpm" class="card-value">2,500</h3>
-                        <p class="text-success">Óptimo</p>
-                    </div>
-                    <div class="data-card">
-                        <p class="card-title">Temp. Refrigerante</p>
-                        <h3 id="live-temp" class="card-value text-accent">90 °C</h3>
-                        <p class="text-success">Estable</p>
-                    </div>
-                    <div class="data-card warning-card">
-                        <p class="card-title">Voltaje Batería</p>
-                        <h3 class="card-value" id="resumen-bateria">11.8 V</h3>
-                        <p class="text-danger">Revisar</p>
-                    </div>
-                    <div class="data-card">
-                        <p class="card-title">Vida del Aceite</p>
-                        <h3 class="card-value" id="resumen-aceite">15%</h3>
-                        <p class="text-warning">Próximo a cambio</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="panel-vehiculos" class="view-panel hidden">
-                <div class="section-subtitle" style="display: flex; justify-content: space-between;">
-                    <h2>Mis Vehículos Registrados</h2>
-                    <button class="btn-primary" id="btn-agregar-vehiculo">+ Agregar Vehículo</button>
-                </div>
-                
-                <div class="grid-2 mt-10" id="vehiculos-list">
-                    </div>
-            </div>
-
-            <div id="panel-historial" class="view-panel hidden">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                    <h2>Historial de Servicios</h2>
-                    <button class="btn-outline">Descargar PDF</button>
-                </div>
-                
-                <div style="display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap;">
-                    <input type="text" id="input-filtro-historial" placeholder="Buscar por repuesto o palabra clave (ej: Frenos)" style="padding: 10px; border-radius: 5px; border: 1px solid var(--border-color); background: var(--bg-dark); color: white; width: 300px;">
-                    <button class="btn-primary" id="btn-filtrar-historial">Filtrar</button>
-                    <button class="btn-outline" id="btn-limpiar-filtro-historial">Limpiar</button>
-                </div>
-                <p class="text-muted" style="margin-bottom: 15px; font-size: 0.8rem;">Tip: prueba palabras clave como "frenos", "aceite", "motor" o "batería" y te mostramos todo lo relacionado.</p>
-
-                <div class="data-card">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Taller</th>
-                                <th>Servicio / Repuesto</th>
-                                <th>Costo</th>
-                                <th>Evidencia</th>
-                            </tr>
-                        </thead>
-                        <tbody id="historial-tbody">
-                            <tr data-servicio="Cambio de Pastillas de Freno">
-                                <td>12 Mayo, 2026</td>
-                                <td>San Luis Motors</td>
-                                <td>Cambio de Pastillas de Freno</td>
-                                <td>S/ 180.00</td>
-                                <td><button class="btn-outline" style="padding: 4px 8px; font-size: 0.8rem;" data-tipo="evidencia" data-fecha="12 Mayo, 2026" data-taller="San Luis Motors" data-servicio="Cambio de Pastillas de Freno" data-costo="S/ 180.00" data-nota="Las pastillas delanteras presentaban cristalización severa (75% desgaste). Se procedió al cambio exitoso.">Ver evidencia</button></td>
-                            </tr>
-                            <tr data-servicio="Mantenimiento 10,000 Km (Aceite)">
-                                <td>03 Abril, 2026</td>
-                                <td>AutoCheck Express</td>
-                                <td>Mantenimiento 10,000 Km (Aceite)</td>
-                                <td>S/ 250.00</td>
-                                <td><button class="btn-outline" style="padding: 4px 8px; font-size: 0.8rem;" data-tipo="boleta" data-fecha="03 Abril, 2026" data-taller="AutoCheck Express" data-servicio="Mantenimiento 10,000 Km (Aceite)" data-costo="S/ 250.00" data-nota="Cambio de aceite sintético 5W-30 y filtro de aceite. Kilometraje registrado: 10,412 km.">Ver boleta</button></td>
-                            </tr>
-                            <tr data-servicio="Escaneo OBD-II (Falla P0300)">
-                                <td>15 Enero, 2026</td>
-                                <td>Taller El Rápido</td>
-                                <td>Escaneo OBD-II (Falla P0300)</td>
-                                <td>S/ 50.00</td>
-                                <td><button class="btn-outline" style="padding: 4px 8px; font-size: 0.8rem;" data-tipo="reporte" data-fecha="15 Enero, 2026" data-taller="Taller El Rápido" data-servicio="Escaneo OBD-II (Falla P0300)" data-costo="S/ 50.00" data-nota="Se detectó falla múltiple en cilindros (Misfire). Se recomendó revisión de bujías y bobinas.">Ver reporte</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p id="historial-vacio" class="empty-state hidden">No se encontraron servicios relacionados con tu búsqueda.</p>
-                </div>
-            </div>
-
-            <div id="panel-talleres" class="view-panel hidden">
-                <h2>Talleres Recomendados</h2>
-                <p class="text-muted">Basado en tu telemetría y ubicación actual.</p>
-                
-                <div style="display: flex; gap: 10px; margin: 20px 0;">
-                    <span class="tag tag-yellow" style="cursor: pointer;">+4 Estrellas ⭐</span>
-                    <span class="tag tag-red" style="cursor: pointer;">Disponibilidad Inmediata ⚡</span>
-                    <span class="tag" style="background: var(--border-color); cursor: pointer;">Especialistas en Frenos 🔧</span>
-                </div>
-
+            <div id="panel-cola" class="view-panel active">
+                <p id="banner-agenda-llena" class="banner-warning hidden">⏸ Recepción pausada: no se están recibiendo nuevos vehículos (agenda llena).</p>
                 <div class="grid-2">
                     <div class="data-card">
-                        <div style="display: flex; justify-content: space-between;">
-                            <h3>San Luis Motors</h3>
-                            <span style="color: gold;">⭐⭐⭐⭐⭐ (4.8)</span>
-                        </div>
-                        <p class="text-muted">A 1.2 km de distancia | Av. San Luis 345</p>
-                        <p class="mt-10"><strong>Atención estimada:</strong> En 15 minutes.</p>
-                        <button class="btn-primary mt-10" style="width: 100%;" data-tipo="perfil" data-taller="San Luis Motors" data-direccion="Av. San Luis 345" data-rating="⭐⭐⭐⭐⭐ (4.8)">Ver Perfil y Agendar</button>
-                    </div>
-                    
-                    <div class="data-card">
-                        <div style="display: flex; justify-content: space-between;">
-                            <h3>AutoCheck Express</h3>
-                            <span style="color: gold;">⭐⭐⭐⭐☆ (4.2)</span>
-                        </div>
-                        <p class="text-muted">A 3.5 km de distancia | Surquillo</p>
-                        <p class="mt-10"><strong>Atención estimada:</strong> Agenda llena hoy.</p>
-                        <button class="btn-outline mt-10" style="width: 100%;" data-tipo="manana" data-taller="AutoCheck Express" data-direccion="Surquillo" data-rating="⭐⭐⭐⭐☆ (4.2)">Ver Horarios Mañana</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="panel-agenda" class="view-panel hidden">
-                <h2>Gestión de Citas</h2>
-                
-                <div class="grid-2 mt-10">
-                    <div id="cita-actual-container"></div>
-
-                    <div class="data-card">
-                        <h3>Agendar Nueva Cita</h3>
-                        <p class="text-muted mt-10">Selecciona un taller desde el mapa para ver sus horarios disponibles y evitar tiempos de espera largos.</p>
-                        <button class="btn-outline mt-10" onclick="document.querySelector('[data-target=\'panel-talleres\']').click();">Ir al Mapa de Talleres</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="panel-alertas" class="view-panel hidden">
-                <div id="alertas-no-leidas-list"></div>
-                <p id="alertas-vacio" class="empty-state hidden">No tienes alertas nuevas. Buen trabajo revisando tu flota.</p>
-
-                <details class="subsection-toggle">
-                    <summary>Leídas</summary>
-                    <div class="subsection-body" id="alertas-leidas-list">
-                        <p class="text-muted" id="alertas-leidas-vacio">Aún no marcaste ninguna alerta como leída.</p>
-                    </div>
-                </details>
-            </div>
-
-            <div id="panel-cotizaciones" class="view-panel hidden">
-                <h2>Cotizaciones Pendientes</h2>
-                <p class="text-muted">Revisa y aprueba el presupuesto enviado por el taller.</p>
-                
-                <div id="cotizaciones-pendientes-list" class="mt-10"></div>
-                <p id="cotizaciones-vacio" class="empty-state hidden">No tienes cotizaciones pendientes por revisar.</p>
-
-                <details class="subsection-toggle">
-                    <summary>Cotizaciones Aprobadas y Rechazadas</summary>
-                    <div class="subsection-body" id="cotizaciones-historial-list">
-                        <p class="text-muted" id="cotizaciones-historial-vacio">Aún no aprobaste ni rechazaste ninguna cotización.</p>
-                    </div>
-                </details>
-            </div>
-
-            <div id="panel-pagos" class="view-panel hidden">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h2>Centro de Pagos</h2>
-                    <button class="btn-outline" id="btn-historial-facturas">Historial de Facturas</button>
-                </div>
-
-                <div class="grid-2">
-                    <div class="data-card">
-                        <h3>Factura Lista para Pago</h3>
-                        <p class="text-muted">Servicio completado el 17 Mayo, 2026</p>
-                        <div style="background: var(--bg-dark); padding: 20px; border-radius: 8px; margin: 15px 0;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                                <span>Mantenimiento Preventivo</span>
-                                <span>S/ 250.00</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                                <span>Escaneo OBD-II</span>
-                                <span>S/ 50.00</span>
-                            </div>
-                            <hr style="border-top: 1px solid var(--border-color); margin: 10px 0;">
-                            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem;">
-                                <span>Total a Pagar</span>
-                                <span class="text-accent">S/ 300.00</span>
-                            </div>
-                        </div>
-                        
-                        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; cursor: pointer;">
-                            <input type="checkbox" id="check-cuotas"> Pagar en 3 cuotas sin intereses (S/ 100.00 / mes)
-                        </label>
-
-                        <div style="display: flex; gap: 10px;">
-                            <button class="btn-primary" style="flex: 1;" onclick="alert('Abriendo pasarela de pagos integrada...')">Pagar con Tarjeta</button>
-                            <button class="btn-outline" style="flex: 1;" id="btn-descargar-boleta">Descargar Boleta</button>
-                        </div>
-                    </div>
-
-                    <div class="data-card">
-                        <h3>Métodos de Pago Guardados</h3>
-                        <div id="tarjetas-list">
-                            <div class="alert-item" style="border-left-color: var(--text-muted); margin-top: 15px;">
+                        <h3>Vehículos en Taller</h3>
+                        <div id="vehiculos-taller-list">
+                            <div class="alert-item" style="border-left-color: var(--warning); margin-top: 15px;">
                                 <div>
-                                    <strong>Visa terminada en 4567</strong>
-                                    <p class="text-muted">Vence: 12/28</p>
+                                    <strong>Toyota Hilux (ABC-123) - Cliente: Juan Pérez</strong>
+                                    <p class="text-muted">Falla reportada: P0300 (Cilindros)</p>
                                 </div>
+                                <span class="tag tag-yellow">En Revisión</span>
+                            </div>
+
+                            <div class="alert-item" style="border-left-color: var(--success); margin-top: 10px;">
+                                <div>
+                                    <strong>Kia Rio (XYZ-789) - Cliente: Luis M.</strong>
+                                    <p class="text-muted">Falla reportada: Cambio de Pastillas</p>
+                                </div>
+                                <span class="tag" style="background: var(--success); color: white;">Listo para entrega</span>
                             </div>
                         </div>
-                        <button class="btn-outline mt-10" id="btn-anadir-tarjeta">+ Añadir Tarjeta</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="modal-evidencia" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: flex; align-items: center; justify-content: center;">
-                <div class="data-card" style="width: 100%; max-width: 500px; position: relative;">
-                    <button onclick="document.getElementById('modal-evidencia').classList.add('hidden')" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">✖</button>
-                    <h3>Evidencia del Servicio</h3>
-                    <p class="text-muted mb-15">Taller: San Luis Motors | Fecha: 12 Mayo, 2026</p>
-                    
-                    <div style="background: var(--bg-dark); height: 250px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px dashed var(--border-color); margin: 15px 0;">
-                        <span class="text-muted">📷 [Imagen de pastillas de freno desgastadas]</span>
-                    </div>
-                    
-                    <p><strong>Nota del mecánico:</strong> Las pastillas delanteras presentaban cristalización severa (75% desgaste). Se procedió al cambio exitoso.</p>
-                    <button class="btn-primary mt-10" style="width: 100%;" onclick="document.getElementById('modal-evidencia').classList.add('hidden')">Entendido</button>
-                </div>
-            </div>
-
-            <div id="app-modal" class="modal-overlay hidden">
-                <div class="modal-box">
-                    <button class="modal-close" id="app-modal-close">✖</button>
-                    <div id="app-modal-content"></div>
-                </div>
-            </div>
-
-            <div id="panel-reportes" class="view-panel hidden">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h2>Análisis de Rendimiento</h2>
-                    <div style="display: flex; gap: 10px;">
-                        <select class="btn-outline" id="select-rango-reporte" style="background: var(--bg-dark); color: white;">
-                            <option value="30d">Últimos 30 días</option>
-                            <option value="anio">Este Año</option>
-                        </select>
-                        <button class="btn-primary" onclick="alert('Descargando Reporte en PDF y CSV...')">⬇ Exportar Datos</button>
-                    </div>
-                </div>
-
-                <div class="grid-2 mt-10">
-                    <div class="data-card">
-                        <h3 id="titulo-grafico-gastos">Gastos en Mantenimiento vs Combustible (Últimos 30 días)</h3>
-                        <div id="grafico-gastos" style="height: 200px; display: flex; align-items: flex-end; gap: 20px; margin-top: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
-                        </div>
-                        <p class="text-muted mt-10" id="nota-grafico-gastos">El pico de febrero corresponde a la reparación del alternador.</p>
                     </div>
 
                     <div class="data-card">
-                        <h3>Predicción de Vida Útil (IA)</h3>
-                        <div style="margin-top: 20px;" id="prediccion-vida-util">
-                        </div>
+                        <h3>Citas de Hoy (Próximos ingresos)</h3>
+                        <table class="data-table mt-10">
+                            <tbody id="citas-hoy-tbody">
+                                <tr data-id="c1"><td>14:00</td><td>Hyundai Accent</td><td><button class="btn-outline" data-hora="14:00" data-vehiculo="Hyundai Accent" data-cliente="Cliente: Mariana Torres" data-placa="RAE-201">Recibir</button></td></tr>
+                                <tr data-id="c2"><td>16:30</td><td>Nissan Yaris</td><td><button class="btn-outline" data-hora="16:30" data-vehiculo="Nissan Yaris" data-cliente="Cliente: Pedro Salas" data-placa="FRT-556">Recibir</button></td></tr>
+                            </tbody>
+                        </table>
+                        <p id="citas-hoy-vacio" class="empty-state hidden">No hay más ingresos programados para hoy.</p>
                     </div>
                 </div>
             </div>
 
-            <div id="panel-configuracion" class="view-panel hidden">
-                <h2>Configuración del Dispositivo y Cuenta</h2>
-                
-                <div class="grid-2 mt-10">
-                    <div class="data-card">
-                        <h3>Sincronización de Escáner OBD-II</h3>
-                        <p class="text-muted mt-10">Conecta tu dispositivo vía Bluetooth o Wi-Fi local.</p>
-                     
-                        <div id="contenedor-escaner" style="background: var(--bg-dark); padding: 15px; border-radius: 5px; margin-top: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--success);">
-                            <div>
-                                <strong>ELM327 v1.5 (AutoPredict_OBD)</strong>
-                                <p class="text-success" style="font-size: 0.8rem;">Conectado y transmitiendo a 500kbps</p>
-                            </div>
-                            <button id="btn-desvincular" class="btn-outline" style="border-color: var(--danger); color: var(--danger);">Desvincular</button>
-                        </div>
-                        
-                        <input type="text" placeholder="Ingresar Dirección MAC manualmente..." style="width: 100%; padding: 10px; margin-top: 15px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px;">
-                        <button class="btn-primary mt-10">Buscar Dispositivos</button>
+            <div id="panel-cotizar" class="view-panel hidden">
+                <div class="data-card" style="max-width: 600px;">
+                    <h2>Nueva Cotización</h2>
+                    <p class="text-muted mb-15">Envía el presupuesto detallado al app del conductor.</p>
+                    
+                    <input type="text" placeholder="Placa del vehículo (Ej: ABC-123)" style="width: 100%; padding: 10px; margin-bottom: 10px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px;">
+                    
+                    <textarea placeholder="Descripción del diagnóstico técnico..." style="width: 100%; padding: 10px; margin-bottom: 10px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px; height: 100px;"></textarea>
+                    
+                    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                        <input type="number" placeholder="Costo Mano de Obra (S/)" style="flex: 1; padding: 10px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px;">
+                        <input type="number" placeholder="Costo Repuestos (S/)" style="flex: 1; padding: 10px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px;">
                     </div>
 
-                    <div class="data-card">
-                        <h3>Preferencias de Alertas</h3>
-                        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
-                            <label style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
-                                Notificaciones Push en Navegador
-                                <input type="checkbox" checked style="width: 20px; height: 20px;">
-                            </label>
-                            <label style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
-                                Alertas Críticas por SMS
-                                <input type="checkbox" checked style="width: 20px; height: 20px;">
-                            </label>
-                            <label style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
-                                Reporte Semanal al Correo
-                                <input type="checkbox" style="width: 20px; height: 20px;">
-                            </label>
-                        </div>
-                        <button class="btn-primary mt-10" style="width: 100%;">Guardar Cambios</button>
+                    <button class="btn-primary" style="width: 100%;" onclick="alert('Cotización enviada al cliente. Esperando aprobación en su app.')">Enviar Cotización Digital</button>
+                </div>
+            </div>
+
+            <div id="panel-evidencias" class="view-panel hidden">
+                <div class="data-card" style="max-width: 600px;">
+                    <h2>Subir Evidencia Visual</h2>
+                    <p class="text-muted mb-15">Toma fotos de las piezas dañadas para respaldar tu trabajo y enviárselas al cliente.</p>
+
+                    <select style="width: 100%; padding: 10px; margin-bottom: 15px; background: var(--bg-dark); color: white; border: 1px solid var(--border-color); border-radius: 5px;">
+                        <option>Seleccionar Vehículo en Taller...</option>
+                        <option>Toyota Hilux (ABC-123)</option>
+                    </select>
+
+                    <div style="border: 2px dashed var(--border-color); padding: 50px; text-align: center; border-radius: 8px; margin-bottom: 20px; cursor: pointer;">
+                        <span style="font-size: 2rem;">📷</span>
+                        <p class="text-muted mt-10">Haz clic para abrir la cámara o subir foto</p>
+                    </div>
+
+                    <button class="btn-primary" style="width: 100%;" onclick="alert('Foto subida con éxito. El cliente recibió una notificación push en su celular.')">Enviar Evidencia al Cliente</button>
+                </div>
+            </div>
+
+            <div id="panel-finanzas" class="view-panel hidden">
+                <h2>Ingresos Mensuales</h2>
+                <div class="grid-4 mt-10">
+                    <div class="data-card" style="text-align: center;">
+                        <p class="card-title">Ingresos Hoy</p>
+                        <h3 class="card-value text-accent">S/ 450.00</h3>
+                    </div>
+                    <div class="data-card" style="text-align: center;">
+                        <p class="card-title">Ingresos del Mes</p>
+                        <h3 class="card-value">S/ 4,200.00</h3>
+                    </div>
+                    <div class="data-card" style="text-align: center;">
+                        <p class="card-title">Cotizaciones Rechazadas</p>
+                        <h3 class="card-value text-danger">2</h3>
                     </div>
                 </div>
             </div>
 
-            <div id="menu-movil-overlay" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000;">
-                <div style="background: var(--bg-card); width: 75%; max-width: 300px; height: 100%; padding: 25px; border-right: 1px solid var(--border-color);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <h2>Menú</h2>
-                        <button id="cerrar-menu-movil" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">✖</button>
-                    </div>
-                    
-                    <p class="text-muted" style="font-size: 0.8rem; text-transform: uppercase;">Servicios</p>
-                    <a href="#" style="display: block; padding: 15px 0; color: white; text-decoration: none; border-bottom: 1px solid var(--border-color);" onclick="document.querySelector('[data-target=\'panel-talleres\']').click(); document.getElementById('cerrar-menu-movil').click();">📍 Buscar Talleres</a>
-                    <a href="#" style="display: block; padding: 15px 0; color: white; text-decoration: none; border-bottom: 1px solid var(--border-color);" onclick="document.querySelector('[data-target=\'panel-agenda\']').click(); document.getElementById('cerrar-menu-movil').click();">📅 Mis Citas</a>
-                    <a href="#" style="display: block; padding: 15px 0; color: white; text-decoration: none; border-bottom: 1px solid var(--border-color);" onclick="document.querySelector('[data-target=\'panel-cotizaciones\']').click(); document.getElementById('cerrar-menu-movil').click();">💰 Cotizaciones</a>
-                    <a href="#" style="display: block; padding: 15px 0; color: white; text-decoration: none; border-bottom: 1px solid var(--border-color);" onclick="document.querySelector('[data-target=\'panel-pagos\']').click(); document.getElementById('cerrar-menu-movil').click();">💳 Pagos y Facturas</a>
-                    
-                    <p class="text-muted" style="margin-top: 20px; font-size: 0.8rem; text-transform: uppercase;">Avanzado</p>
-                    <a href="#" style="display: block; padding: 15px 0; color: white; text-decoration: none; border-bottom: 1px solid var(--border-color);" onclick="document.querySelector('[data-target=\'panel-reportes\']').click(); document.getElementById('cerrar-menu-movil').click();">📈 Reportes Analíticos</a>
+            <div id="panel-perfil-taller" class="view-panel hidden">
+                <div class="data-card" style="max-width: 600px;">
+                    <h2>Información del Taller</h2>
+                    <p class="text-muted mb-15">Esta información es la que ven tus clientes en "Buscar Talleres".</p>
+
+                    <label class="form-label">Nombre del taller</label>
+                    <input type="text" id="perfil-nombre" class="form-input" value="Mi Taller"> <br>
+
+                    <label class="form-label">Dirección</label>
+                    <input type="text" id="perfil-direccion" class="form-input" value="Av. San Luis 345, Lima"><br>
+
+                    <label class="form-label">Teléfono de contacto</label>
+                    <input type="text" id="perfil-telefono" class="form-input" value="+51 987 654 321"><br>
+
+                    <label class="form-label">Horario de atención</label>
+                    <input type="text" id="perfil-horario" class="form-input" value="Lun a Sáb, 8:00 AM - 6:00 PM"><br>
+
+                    <label class="form-label">Especialidad</label>
+                    <select id="perfil-especialidad" class="form-input">
+                        <option value="general">Mecánica General</option>
+                        <option value="frenos">Especialista en Frenos</option>
+                        <option value="electrico">Sistema Eléctrico</option>
+                        <option value="motor">Motor y Transmisión</option>
+                    </select>
+
+                    <button class="btn-primary mt-10" style="width: 100%;" id="btn-guardar-perfil-taller">Guardar Cambios</button>
+                    <p id="perfil-guardado-msg" class="text-success hidden mt-10" style="text-align:center;">✓ Cambios guardados correctamente.</p>
                 </div>
             </div>
 
         </main>
     </div>
-
+    
     <nav class="bottom-nav">
-        <a href="#" class="bottom-nav-item active" onclick="document.querySelector('[data-target=\'panel-resumen\']').click()">
-            <span>🏠</span><br>Inicio
+        <a href="#" class="bottom-nav-item active" onclick="document.querySelector('[data-target=\'panel-cola\']').click()">
+            <span>📋</span><br>Cola
         </a>
-        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-vehiculos\']').click()">
-            <span>🚗</span><br>Vehículo
+        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-cotizar\']').click()">
+            <span>📝</span><br>Cotizar
         </a>
-        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-agenda\']').click()">
-            <span>🔧</span><br>Mant.
+        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-evidencias\']').click()">
+            <span>📷</span><br>Evidencia
         </a>
-        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-configuracion\']').click()">
-            <span>👤</span><br>Perfil
+        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-perfil-taller\']').click()">
+            <span>🏪</span><br>Mi Taller
         </a>
     </nav>
+
+    <!-- Modal genérico reutilizable (ej: confirmación de vehículo recibido) -->
+    <div id="app-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <button class="modal-close" id="app-modal-close">✖</button>
+            <div id="app-modal-content"></div>
+        </div>
+    </div>
 
     <script src="dashboard.js"></script>
 </body>
