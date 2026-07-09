@@ -32,19 +32,8 @@
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
-<<<<<<< HEAD
     height: 100vh;
     overflow: hidden;
-=======
-    min-height: 100vh; /* cambiar a min-height para permitir escrolleo cuando haya contenido mayor a la pantalla */
-    overflow-y: auto;  /* permitir scroll por defecto; al abrir el menú añadimos clase para bloquear si se desea */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-body.nav-open {
-    overflow: hidden; /* cuando el nav está abierto, bloqueamos el scroll del fondo */
->>>>>>> 1d6b999 (TF1- archivos actualizados)
 }
 
 .text-accent {
@@ -79,9 +68,7 @@ body.nav-open {
     margin-top: 10px;
 }
 
-<<<<<<< HEAD
-=======
-/* Botón menú móvil (ya lo tenías, se asegura que esté visible en móvil) */
+/* Botón menú móvil (Oculto en PC) */
 .btn-menu-movil {
     display: none;
     background: none;
@@ -92,16 +79,11 @@ body.nav-open {
     line-height: 1;
 }
 
->>>>>>> 1d6b999 (TF1- archivos actualizados)
 /* Dashboard */
 
 .dashboard-container {
     display: flex;
-<<<<<<< HEAD
     height: 100vh;
-=======
-    min-height: 100vh;
->>>>>>> 1d6b999 (TF1- archivos actualizados)
 }
 
 /* Sidebar */
@@ -307,13 +289,10 @@ body.nav-open {
         display: none;
     }
 
-<<<<<<< HEAD
-=======
     .btn-menu-movil {
         display: block; /* Aparece solo en celular */
     }
 
->>>>>>> 1d6b999 (TF1- archivos actualizados)
     .bottom-nav {
         display: flex;
         justify-content: space-around;
@@ -340,83 +319,6 @@ body.nav-open {
 
     main.main-content {
         padding-bottom: 80px;
-    }
-<<<<<<< HEAD
-=======
-
-    /* MENU MÓVIL: overlay + panel fijo */
-    .nav-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.5);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.22s ease;
-        z-index: 998;
-    }
-
-    .nav-overlay.open {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .nav-mobile {
-        position: fixed;
-        top: 0;
-        left: 0; /* Cambia a right:0 si prefieres que salga desde la derecha */
-        width: 85%;
-        max-width: 420px;
-        height: 100vh;
-        background-color: var(--bg-panel);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-        z-index: 999;
-        transform: translateX(-100%);
-        transition: transform 0.28s cubic-bezier(.2,.9,.2,1);
-        display: flex;
-        flex-direction: column;
-        padding: 1rem 0;
-        overflow: hidden; /* overflow interno controlado en .menu-inner */
-    }
-
-    .nav-mobile.open {
-        transform: translateX(0);
-    }
-
-    /* Contenedor interno con scroll */
-    .nav-mobile .menu-inner {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding: 0 1rem 2rem 1rem;
-        height: calc(100vh - 60px); /* deja espacio para header del menu si lo tuvieras */
-    }
-
-    .nav-mobile .menu-list {
-        display: flex;
-        flex-direction: column;
-        gap: .25rem;
-        padding-top: 0.5rem;
-    }
-
-    .nav-mobile .menu-list .nav-item {
-        padding: 12px 14px;
-        border-left: none;
-        color: var(--text-main);
-    }
-
-    .nav-mobile .menu-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 16px;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    .nav-mobile .close-btn {
-        background: none;
-        border: none;
-        color: var(--text-muted);
-        font-size: 1.6rem;
-        cursor: pointer;
     }
 }
 
@@ -625,5 +527,4 @@ button:disabled,
     padding: 30px;
     text-align: center;
     color: var(--text-muted);
->>>>>>> 1d6b999 (TF1- archivos actualizados)
 }

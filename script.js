@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     
     // 1. Lógica del Simulador OBD-II
