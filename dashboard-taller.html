@@ -18,6 +18,10 @@
                 <a href="#" class="nav-item" data-target="panel-cotizar">📝 Generar Cotización</a>
                 <a href="#" class="nav-item" data-target="panel-evidencias">📷 Subir Evidencias</a>
                 <a href="#" class="nav-item" data-target="panel-finanzas">💰 Finanzas y Facturación</a>
+<<<<<<< HEAD
+=======
+                <a href="#" class="nav-item" data-target="panel-perfil-taller">🏪 Mi Taller</a>
+>>>>>>> 1d6b999 (TF1- archivos actualizados)
             </nav>
             <div class="sidebar-footer">
                 <div class="user-info">
@@ -36,11 +40,16 @@
                 <h1 id="page-title">Cola de Vehículos</h1>
                 <div class="topbar-actions">
                     <span id="live-clock" class="text-muted">--:--</span>
+<<<<<<< HEAD
                     <button class="btn-primary">Pausar Recepción (Agenda Llena)</button>
+=======
+                    <button class="btn-primary" id="btn-pausar-recepcion">Pausar Recepción (Agenda Llena)</button>
+>>>>>>> 1d6b999 (TF1- archivos actualizados)
                 </div>
             </header>
 
             <div id="panel-cola" class="view-panel active">
+<<<<<<< HEAD
                 <div class="grid-2">
                     <div class="data-card">
                         <h3>Vehículos en Taller</h3>
@@ -59,15 +68,46 @@
                                 <p class="text-muted">Falla reportada: Cambio de Pastillas</p>
                             </div>
                             <span class="tag" style="background: var(--success); color: white;">Listo para entrega</span>
+=======
+                <p id="banner-agenda-llena" class="banner-warning hidden">⏸ Recepción pausada: no se están recibiendo nuevos vehículos (agenda llena).</p>
+                <div class="grid-2">
+                    <div class="data-card">
+                        <h3>Vehículos en Taller</h3>
+                        <div id="vehiculos-taller-list">
+                            <div class="alert-item" style="border-left-color: var(--warning); margin-top: 15px;">
+                                <div>
+                                    <strong>Toyota Hilux (ABC-123) - Cliente: Juan Pérez</strong>
+                                    <p class="text-muted">Falla reportada: P0300 (Cilindros)</p>
+                                </div>
+                                <span class="tag tag-yellow">En Revisión</span>
+                            </div>
+
+                            <div class="alert-item" style="border-left-color: var(--success); margin-top: 10px;">
+                                <div>
+                                    <strong>Kia Rio (XYZ-789) - Cliente: Luis M.</strong>
+                                    <p class="text-muted">Falla reportada: Cambio de Pastillas</p>
+                                </div>
+                                <span class="tag" style="background: var(--success); color: white;">Listo para entrega</span>
+                            </div>
+>>>>>>> 1d6b999 (TF1- archivos actualizados)
                         </div>
                     </div>
 
                     <div class="data-card">
                         <h3>Citas de Hoy (Próximos ingresos)</h3>
                         <table class="data-table mt-10">
+<<<<<<< HEAD
                             <tr><td>14:00</td><td>Hyundai Accent</td><td><button class="btn-outline">Recibir</button></td></tr>
                             <tr><td>16:30</td><td>Nissan Yaris</td><td><button class="btn-outline">Recibir</button></td></tr>
                         </table>
+=======
+                            <tbody id="citas-hoy-tbody">
+                                <tr data-id="c1"><td>14:00</td><td>Hyundai Accent</td><td><button class="btn-outline" data-hora="14:00" data-vehiculo="Hyundai Accent" data-cliente="Cliente: Mariana Torres" data-placa="RAE-201">Recibir</button></td></tr>
+                                <tr data-id="c2"><td>16:30</td><td>Nissan Yaris</td><td><button class="btn-outline" data-hora="16:30" data-vehiculo="Nissan Yaris" data-cliente="Cliente: Pedro Salas" data-placa="FRT-556">Recibir</button></td></tr>
+                            </tbody>
+                        </table>
+                        <p id="citas-hoy-vacio" class="empty-state hidden">No hay más ingresos programados para hoy.</p>
+>>>>>>> 1d6b999 (TF1- archivos actualizados)
                     </div>
                 </div>
             </div>
@@ -127,10 +167,44 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
+=======
+            <div id="panel-perfil-taller" class="view-panel hidden">
+                <div class="data-card" style="max-width: 600px;">
+                    <h2>Información del Taller</h2>
+                    <p class="text-muted mb-15">Esta información es la que ven tus clientes en "Buscar Talleres".</p>
+
+                    <label class="form-label">Nombre del taller</label>
+                    <input type="text" id="perfil-nombre" class="form-input" value="Mi Taller"> <br>
+
+                    <label class="form-label">Dirección</label>
+                    <input type="text" id="perfil-direccion" class="form-input" value="Av. San Luis 345, Lima"><br>
+
+                    <label class="form-label">Teléfono de contacto</label>
+                    <input type="text" id="perfil-telefono" class="form-input" value="+51 987 654 321"><br>
+
+                    <label class="form-label">Horario de atención</label>
+                    <input type="text" id="perfil-horario" class="form-input" value="Lun a Sáb, 8:00 AM - 6:00 PM"><br>
+
+                    <label class="form-label">Especialidad</label>
+                    <select id="perfil-especialidad" class="form-input">
+                        <option value="general">Mecánica General</option>
+                        <option value="frenos">Especialista en Frenos</option>
+                        <option value="electrico">Sistema Eléctrico</option>
+                        <option value="motor">Motor y Transmisión</option>
+                    </select>
+
+                    <button class="btn-primary mt-10" style="width: 100%;" id="btn-guardar-perfil-taller">Guardar Cambios</button>
+                    <p id="perfil-guardado-msg" class="text-success hidden mt-10" style="text-align:center;">✓ Cambios guardados correctamente.</p>
+                </div>
+            </div>
+
+>>>>>>> 1d6b999 (TF1- archivos actualizados)
         </main>
     </div>
     
     <nav class="bottom-nav">
+<<<<<<< HEAD
         <a href="#" class="bottom-nav-item active" onclick="document.querySelector('[data-target=\'panel-resumen\']').click()">
             <span>🏠</span><br>Inicio
         </a>
@@ -145,6 +219,30 @@
         </a>
     </nav>
 
+=======
+        <a href="#" class="bottom-nav-item active" onclick="document.querySelector('[data-target=\'panel-cola\']').click()">
+            <span>📋</span><br>Cola
+        </a>
+        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-cotizar\']').click()">
+            <span>📝</span><br>Cotizar
+        </a>
+        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-evidencias\']').click()">
+            <span>📷</span><br>Evidencia
+        </a>
+        <a href="#" class="bottom-nav-item" onclick="document.querySelector('[data-target=\'panel-perfil-taller\']').click()">
+            <span>🏪</span><br>Mi Taller
+        </a>
+    </nav>
+
+    <!-- Modal genérico reutilizable (ej: confirmación de vehículo recibido) -->
+    <div id="app-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <button class="modal-close" id="app-modal-close">✖</button>
+            <div id="app-modal-content"></div>
+        </div>
+    </div>
+
+>>>>>>> 1d6b999 (TF1- archivos actualizados)
     <script src="dashboard.js"></script>
 </body>
 </html>
